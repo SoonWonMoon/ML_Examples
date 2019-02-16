@@ -1,2 +1,2 @@
-# ML Image Recognition
-ML image recognition via tf
+# ML Examples
+Machine Learning Examples using tensorflow 

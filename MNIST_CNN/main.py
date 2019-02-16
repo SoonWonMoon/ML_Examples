@@ -40,7 +40,7 @@ t7 = tf.reshape(t6, [tf.shape(x)[0], 1440])
 t8    = tf.contrib.layers.fully_connected(t7, 500, activation_fn=tf.nn.relu)
 y_hat = tf.contrib.layers.fully_connected(t8, 10, activation_fn=None)
 
-loss  = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=y_hat))
+loss  = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=y_hat))
 train = tf.train.AdamOptimizer(learning_rate=0.0005).minimize(loss)
 acc   = tf.reduce_mean(tf.cast(tf.equal(y_class, tf.argmax(y_hat, axis=1, output_type=tf.int32)), dtype=tf.float32))
 

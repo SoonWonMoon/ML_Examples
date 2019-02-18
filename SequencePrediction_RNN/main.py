@@ -42,7 +42,7 @@ eps = tf.constant(0.01, shape=[batch_size, sequence_len])
 
 #Define Network
 gru = tf.contrib.cudnn_rnn.CudnnGRU(3, 50)
-rnn_output, state = gru(tf.transpose(x_one_hot,[1,0,2]))
+rnn_output, state = gru(tf.transpose(x_one_hot,[1,0,2]), initial_state=(tf.constant(0, shape=[3,batch_size,sequence_len], dtype=tf.float32),))
 
 y_hat = tf.contrib.layers.fully_connected(tf.transpose(rnn_output, [1,0,2]), class_num, activation_fn = None)
 
